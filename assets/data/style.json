@@ -1,0 +1,15 @@
+{    
+    "spellName":{"fontSize":80,"flex":3,"color":"#fff"},
+    "main":{"resizeMode":"contain","flex":2,"flexDirection":"row","justifyContent":"space-around","flexWrap":"wrap"},
+    "normalImage":{"resizeMode":"contain","flex":1},
+    "spell":{"flexDirection":"row","margin":5,"padding":3},
+    "evocation":{"backgroundColor":"#900"},
+    "conjuration":{"backgroundColor":"#cc0"},
+    "transmutation":{"backgroundColor":"#606"},
+    "necromancy":{"backgroundColor":"#222"},
+    "divination":{"backgroundColor":"#008"},
+    "enchantment":{"backgroundColor":"#08a"},
+    "illusion":{"backgroundColor":"#4a5"},
+    "abjuration":{"backgroundColor":"#0a0"},
+    "devider":{"color":"#fff"}
+}

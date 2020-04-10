@@ -1,19 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {StyleSheet, Text, View, ImageBackground, } from 'react-native';
+import {ListedSpells} from './assets/data/spellComponents';
+
+const styles = StyleSheet.create(require("./assets/data/style.json"));
+let backgroundImg={uri:require("./assets/_img/Background.png")};
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <ImageBackground source={backgroundImg} style={styles.main}>
+      <ListedSpells />
+    </ImageBackground>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
