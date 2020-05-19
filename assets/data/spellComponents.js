@@ -42,6 +42,7 @@ function ListHeader(props){
     </>
   );
 }
+
 const styles=StyleSheet.create({  
     spellNameWhite:{
         color:"#fff"
