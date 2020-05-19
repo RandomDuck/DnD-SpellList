@@ -1,3 +1,14 @@
+const spellTextColor={
+    abjuration:"black",
+    conjuration:"black",
+    divination:"white",
+    enchantment:"black",
+    evocation:"white",
+    illusion:"black",
+    necromancy:"white",
+    transmutation:"white"
+}
+
 const spellTypes=[
     "abjuration",
     "conjuration",
@@ -34,4 +45,4 @@ const spellImages={
 const backgroundImg=require("../_img/Background.png");
 const spellList=require("./spells.json");
 
-export {spellImages,classType,spellTypes,spellList,backgroundImg}
+export {spellImages,classType,spellTypes,spellList,backgroundImg,spellTextColor}

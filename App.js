@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import { ImageBackground, View, StyleSheet} from 'react-native';
-import FlatSpells from './assets/data/spellComponents';
 import { backgroundImg } from "./assets/data/dataHandler"
 import { LevelOpen, LevelModal } from './assets/data/levelSelectModals'
+import FlatSpells from './assets/data/spellComponents';
 import SpellModal from './assets/data/spellModal'
 
 
@@ -34,8 +34,8 @@ const styles=StyleSheet.create({
       main:{
           resizeMode:"contain",
           justifyContent:"space-around",
-          height:"103%",
-          flexWrap:"wrap"
+          flexDirection:"column",
+          height:"103%"
       },  
       topWrapper:{
           paddingTop:"7%",

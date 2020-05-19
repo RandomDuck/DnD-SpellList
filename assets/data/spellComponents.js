@@ -1,11 +1,11 @@
 
 import React from 'react';
-import { Text, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
-import { spellList, spellImages } from './dataHandler'
+import { Text, StyleSheet, FlatList, View, Image, TouchableOpacity } from 'react-native';
+import { spellList, spellImages, spellTextColor } from './dataHandler'
 
 let spells={level0:[],level1:[],level2:[],level3:[],level4:[],level5:[],level6:[],level7:[],level8:[],level9:[]};
 spellList.forEach(e=>spells["level"+e.level].push(e))
-let titles=["Cantrips: ","Level 1: ","Level 2: ","Level 3: ","Level 4: ","Level 5: ","Level 6: ","Level 7: ","Level 8: ","Level 9: "]
+let titles=["Cantrips:","Level 1:","Level 2:","Level 3:","Level 4:","Level 5:","Level 6:","Level 7:","Level 8:","Level 9:"]
 
 // export a flatlist of spells dpendant on show prop, each spell can be cloicked for a detaild modal view
 export default function FlatSpell({show, spellModalController}) {
@@ -13,23 +13,24 @@ export default function FlatSpell({show, spellModalController}) {
   let data=[]
   spellData.forEach((e,i)=>{data.push({data:e,key:i})})
   return (
-    <>
+    <View style={{width:"100%",marginTop:"15%"}}>
       <ListHeader title={titles[show]}/>
       <FlatList 
         data={data}
         renderItem={({item})=>Spell(item.data,spellModalController)}
         numColumns={2}
       />
-    </>
+    </View>
   );
 }
 
 function Spell(spellData,controller){
   let spellType=spellData.types.split(" ")[1]
+  let textColor=styles[spellTextColor[spellType]]
   return(
     <TouchableOpacity style={[styles.flexRow,styles.spell,styles[spellType]]} onPress={()=>{controller(true,spellData)}} >
       <Image style={styles.image} source={spellImages[spellType]}></Image>
-      <Text style={[styles.spellName,]}>{spellData.name}</Text>
+      <Text style={[styles.spellName,textColor]}>{spellData.name}</Text>
     </TouchableOpacity>
   );
 }
@@ -37,16 +38,24 @@ function Spell(spellData,controller){
 function ListHeader(props){
   return(
     <>
-      <Text style={{backgroundColor:"#333", margin:10}}>{props.title}</Text>
+      <Text style={styles.header}>{props.title}</Text>
     </>
   );
 }
 
 const styles=StyleSheet.create({  
-    spellNameWhite:{
+    header:{
+      backgroundColor:"#353", 
+      margin:10, 
+      padding:10, 
+      color:"#fff", 
+      textAlign:"center",
+      borderRadius:10
+    },
+    white:{
         color:"#fff"
     },
-    spellNameBlack:{
+    black:{
         color:"#000"
     },
     image:{
@@ -55,12 +64,15 @@ const styles=StyleSheet.create({
         resizeMode:"contain"
     },
     spell:{
+        alignItems:"center",
         padding:10, 
         justifyContent:"space-between",
         width:"48%",
         marginLeft:"0.5%",
         marginRight:"0.5%",
+        borderRadius:12,
         marginBottom:"1%"
+        
     },
     flexRow:{
         flexDirection:"row"

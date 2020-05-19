@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, View, Modal, TouchableOpacity, Text, TouchableWithoutFeedback, ScrollView, Image } from 'react-native';
-import { spellImages } from "./dataHandler"
+import { spellImages, spellTextColor } from "./dataHandler"
 
 export default function SpellModal({spell,controller}){
-  let textColor=styles.white
   let spellType=spell.data.types.split(" ")[1]
+  let textColor=styles[spellTextColor[spellType]]
   let upperSpellType = String(spellType).charAt(0).toUpperCase()+String(spellType).slice(1)
   let use=[]
   let data=[]
@@ -20,7 +20,7 @@ export default function SpellModal({spell,controller}){
           <View style={styles.spellViewTop}>
             <View>
               <Text style={textColor}>Name: {spell.data.name}</Text>
-              <Text style={textColor}>Level: {spell.data.level>0?lspell.data.level:"Cantrip"}</Text>
+              <Text style={textColor}>Level: {spell.data.level>0?spell.data.level:"Cantrip"}</Text>
               <Text style={textColor}>Type: {upperSpellType}</Text>
             </View>
             <View>
@@ -31,7 +31,7 @@ export default function SpellModal({spell,controller}){
             {use}
           </View>
           <Text style={[textColor,{marginTop:"4%"}]}>Description:</Text>
-          <ScrollView > 
+          <ScrollView> 
             <View onStartShouldSetResponder={() => true}>
               {data}
             </View>
@@ -44,17 +44,11 @@ export default function SpellModal({spell,controller}){
 
 const styles=StyleSheet.create({
     white:{color:"#fff"},
+    black:{color:"#000"},
     image:{
       height:80,
       width:80,
       resizeMode:"contain"
-    },
-    spacer:{
-      padding:"2%",
-      textAlign:"center",
-      margin:"2%",
-      backgroundColor:"#222",
-      color:"#fff"
     },
     spellViewTop:{
       justifyContent:"center",
@@ -62,6 +56,7 @@ const styles=StyleSheet.create({
       alignItems:"center"
     },
     spellView:{
+      borderRadius:20,
       padding:"4%",
       margin:"4%",
       height:"90%"
