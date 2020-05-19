@@ -1,17 +1,25 @@
 import React from 'react';
 import { StyleSheet, View, Modal, TouchableOpacity, Text, TouchableWithoutFeedback, ScrollView, Image } from 'react-native';
-import { spellImages, spellTextColor } from "./dataHandler"
+import { spellImages, spellTextColor, classType } from "./dataHandler"
 
 export default function SpellModal({spell,controller}){
-  let spellType=spell.data.types.split(" ")[1]
+
+  let types=spell.data.types.split(" ")
+  let spellType=types[1]
   let textColor=styles[spellTextColor[spellType]]
-  let upperSpellType = String(spellType).charAt(0).toUpperCase()+String(spellType).slice(1)
+  let upperSpellType = capitalize(spellType)
   let use=[]
   let data=[]
   spell.data.use.forEach((e,i)=>use.push(<Text key={i} style={textColor}>{e}</Text>))
   spell.data.data.forEach((e,i)=>data.push(<Text key={i} style={[textColor,{marginTop:"1%"}]}>{e}</Text>))
   let classes=[]
-  spell.data.types.split(" ").slice(2).forEach(e=>classes.push(e+" "));
+  types.slice(2,types.length-2).forEach(e=>classes.push(capitalize(e)+", "));
+  classes.push(capitalize(types[types.length-1]))
+
+  function capitalize(e){
+    return String(e).charAt(0).toUpperCase()+String(e).slice(1)
+  }
+
   return(
     <Modal
       animationType="slide"
