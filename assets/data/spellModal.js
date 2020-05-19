@@ -10,6 +10,8 @@ export default function SpellModal({spell,controller}){
   let data=[]
   spell.data.use.forEach((e,i)=>use.push(<Text key={i} style={textColor}>{e}</Text>))
   spell.data.data.forEach((e,i)=>data.push(<Text key={i} style={[textColor,{marginTop:"1%"}]}>{e}</Text>))
+  let classes=[]
+  spell.data.types.split(" ").slice(2).forEach(e=>classes.push(e+" "));
   return(
     <Modal
       animationType="slide"
@@ -36,6 +38,8 @@ export default function SpellModal({spell,controller}){
               {data}
             </View>
           </ScrollView>
+          <Text style={textColor}>Classes that can use:</Text>
+          <Text style={textColor}>{classes}</Text>
         </View>
       </TouchableWithoutFeedback>
     </Modal>
