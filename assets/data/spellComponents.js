@@ -1,45 +1,46 @@
 
-import React, { useState } from 'react';
-import { Text, View, Image, SectionList } from 'react-native';
-import { styles, spellList } from './dataHandler'
+import React from 'react';
+import { Text, View, FlatList, Image, TouchableOpacity } from 'react-native';
+import { styles, spellList, spellImages } from './dataHandler'
 
+let spells={level0:[],level1:[],level2:[],level3:[],level4:[],level5:[],level6:[],level7:[],level8:[],level9:[]};
+spellList.forEach(e=>spells["level"+e.level].push(e))
+let titles=["Cantrips: ","Level 1: ","Level 2: ","Level 3: ","Level 4: ","Level 5: ","Level 6: ","Level 7: ","Level 8: ","Level 9: "]
 
-function Spell(props){    
+// export a flatlist of spells dpendant on show prop, each spell can be cloicked for a detaild modal view
+export default function FlatSpell({show, spellModalController}) {
+    let spellData=spells["level"+show]
+    let data=[]
+    spellData.forEach((e,i)=>{data.push({data:e,key:i})})
+    return (
+      <>
+        <ListHeader title={titles[show]}/>
+        <FlatList 
+          data={data}
+          renderItem={({item})=>Spell(item.data,spellModalController)}
+          numColumns={2}
+        />
+      </>
+    );
+}
+
+function Spell(spellData,controller){
+  let spellType=spellData.types.split(" ")[1]
+  function handlePress() {controller(true,spellData)}
   return(
-    <View style={{flex:1}}>
-        <Image source={spellImages[type]} style={styles.normalImage}/>
-        <Text style={styles.spellName}>{name} also {JSON.stringify(thisStyle)} also}</Text>
-        <Image source={spellImages[type]} style={styles.normalImage}/>
-      
-      <View>
-        <Text>{use}</Text>
-        {data.forEach((e,i)=><Text key={i}>{e}</Text>)}
-      </View>
-    </View>
+    <TouchableOpacity style={[styles.flexRow,styles.spell,styles[spellType]]} onPressOut={handlePress()} >
+      <Image style={styles.normalImage} source={spellImages[spellType]}></Image>
+      <Text style={[styles.spellName,]}>{spellData.name}</Text>
+    </TouchableOpacity>
   );
 }
 
-function ListedSpells(){
-  let spells={level0:[],level1:[],level2:[],level3:[],level4:[],level5:[],level6:[],level7:[],level8:[],level9:[]};
-  spellList.forEach(e=>spells["level"+e.level].push(e))
+function ListHeader(props){
   return(
-    <SectionList sections={
-      [
-        {title:"Cantrips:", data: spells.level0},
-        {title:"Level 1:", data: spells.level1},
-        {title:"Level 2:", data: spells.level2},
-        {title:"Level 3:", data: spells.level3},
-        {title:"Level 4:", data: spells.level4},
-        {title:"Level 5:", data: spells.level5},
-        {title:"Level 6:", data: spells.level6},
-        {title:"Level 7:", data: spells.level7},
-        {title:"Level 8:", data: spells.level8},
-        {title:"Level 9:", data: spells.level9}
-      ]
-    }
-    />
-  )
+    <>
+      <Text style={{backgroundColor:"#333", margin:10}}>{props.title}</Text>
+    </>
+  );
 }
 
-export { ListedSpells, Spell };
   

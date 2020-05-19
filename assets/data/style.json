@@ -1,22 +1,36 @@
 {    
-    "spellName":{
-        "flex":3,"color":"#fff"
+    "topWrapper":{
+        "paddingTop":"7%",
+        "backgroundColor":"#a60"
+    },
+    "spellNameWhite":{
+        "color":"#fff"
+    },
+    "spellNameBlack":{
+        "color":"#000"
     },
     "main":{
         "resizeMode":"contain",
-        "flex":2,
-        "flexDirection":"row",
         "justifyContent":"space-around",
+        "height":"103%",
         "flexWrap":"wrap"
     },
     "normalImage":{
-        "resizeMode":"contain",
-        "flex":1
+        "height":40,
+        "width":40,
+        "resizeMode":"contain"
+    },
+    "scrollView":{
+        "flexDirection":"row",
+        "justifyContent":"space-evenly"
     },
     "spell":{
-        "height":"8%",
-        "flexDirection":"row",
-        "margin":5,"padding":3
+        "padding":10, 
+        "justifyContent":"space-between",
+        "width":"48%",
+        "marginLeft":"0.5%",
+        "marginRight":"0.5%",
+        "marginBottom":"1%"
     },
     "flexRow":{
         "flexDirection":"row"
@@ -44,14 +58,5 @@
     },
     "abjuration":{
         "backgroundColor":"#0a0"
-    },
-    "devider":{
-        "color":"#fff"
-    },
-    "show":{
-        "display":"flex"
-    },
-    "hide":{
-        "display":"none"
     }
 }
