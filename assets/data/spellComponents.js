@@ -89,4 +89,5 @@ const styles=StyleSheet.create({
   abjuration:{
       backgroundColor:"#0a0"
   }
-});
+}
+);
