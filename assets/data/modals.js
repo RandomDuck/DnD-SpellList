@@ -1,20 +1,25 @@
 import React, { useState } from 'react';
-import { Text, View, Image, Modal } from 'react-native';
+import { View, Image, Modal } from 'react-native';
 
 
 function Level(){
-    
+    return(
+      <View style={styles}></View>
+    );
 }
 
 function LevelSelect({show}){
-  <Modal
-    visible={show} 
-  >
+  return(
+    <Modal
+      visible={show} 
+    >
 
-  </Modal>
+    </Modal>
+  );
 }
 function spellModal(){
-  
+
 }
+const styles=StyleSheet.create({})
 
 export{spellModal,LevelSelect}
