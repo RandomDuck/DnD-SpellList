@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { ImageBackground, View, } from 'react-native';
+import { ImageBackground, View, StyleSheet} from 'react-native';
 import FlatSpells from './assets/data/spellComponents';
 import { backgroundImg, styles } from "./assets/data/dataHandler"
 import { spellModal, LevelSelect } from './assets/data/modals'
@@ -25,3 +25,17 @@ export default function App() {
     </View>
   );
 }
+
+const styles=StyleSheet.create({
+      main:{
+          resizeMode:"contain",
+          justifyContent:"space-around",
+          height:"103%",
+          flexWrap:"wrap"
+      },  
+      topWrapper:{
+          paddingTop:"7%",
+          backgroundColor:"#a60"
+    }
+  }
+);

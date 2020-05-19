@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Text, View, FlatList, Image, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
 import { styles, spellList, spellImages } from './dataHandler'
 
 let spells={level0:[],level1:[],level2:[],level3:[],level4:[],level5:[],level6:[],level7:[],level8:[],level9:[]};
@@ -42,5 +42,51 @@ function ListHeader(props){
     </>
   );
 }
-
-  
+const styles=StyleSheet.create({  
+  spellNameWhite:{
+      color:"#fff"
+  },
+  spellNameBlack:{
+      color:"#000"
+  },
+  normalImage:{
+      height:40,
+      width:40,
+      resizeMode:"contain"
+  },
+  spell:{
+      padding:10, 
+      justifyContent:"space-between",
+      width:"48%",
+      marginLeft:"0.5%",
+      marginRight:"0.5%",
+      marginBottom:"1%"
+  },
+  flexRow:{
+      flexDirection:"row"
+  },
+  evocation:{
+      backgroundColor:"#900"
+  },
+  conjuration:{
+      backgroundColor:"#cc0"
+  },
+  transmutation:{
+      backgroundColor:"#606"
+  },
+  necromancy:{
+      backgroundColor:"#222"
+  },
+  divination:{
+      backgroundColor:"#008"
+  },
+  enchantment:{
+      backgroundColor:"#08a"
+  },
+  illusion:{
+      backgroundColor:"#4a5"
+  },
+  abjuration:{
+      backgroundColor:"#0a0"
+  }
+});

@@ -1,5 +1,3 @@
-import {StyleSheet} from "react-native"
-
 const spellTypes=[
     "abjuration",
     "conjuration",
@@ -35,6 +33,5 @@ const spellImages={
 
 const backgroundImg=require("../_img/Background.png");
 const spellList=require("./spells.json");
-const styles=StyleSheet.create(require("./style.json"));
 
-export {spellImages,styles,classType,spellTypes,spellList,backgroundImg}
+export {spellImages,classType,spellTypes,spellList,backgroundImg}
