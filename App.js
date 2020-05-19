@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import { ImageBackground, View, StyleSheet} from 'react-native';
 import FlatSpells from './assets/data/spellComponents';
 import { backgroundImg } from "./assets/data/dataHandler"
-import { SpellModal, LevelOpen, LevelModal } from './assets/data/spellModal'
+import { LevelOpen, LevelModal } from './assets/data/levelSelectModals'
+import SpellModal from './assets/data/spellModal'
 
 
 export default function App() {
