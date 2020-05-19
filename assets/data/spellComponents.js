@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Text, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
-import { styles, spellList, spellImages } from './dataHandler'
+import { spellList, spellImages } from './dataHandler'
 
 let spells={level0:[],level1:[],level2:[],level3:[],level4:[],level5:[],level6:[],level7:[],level8:[],level9:[]};
 spellList.forEach(e=>spells["level"+e.level].push(e))
@@ -9,27 +9,26 @@ let titles=["Cantrips: ","Level 1: ","Level 2: ","Level 3: ","Level 4: ","Level 
 
 // export a flatlist of spells dpendant on show prop, each spell can be cloicked for a detaild modal view
 export default function FlatSpell({show, spellModalController}) {
-    let spellData=spells["level"+show]
-    let data=[]
-    spellData.forEach((e,i)=>{data.push({data:e,key:i})})
-    return (
-      <>
-        <ListHeader title={titles[show]}/>
-        <FlatList 
-          data={data}
-          renderItem={({item})=>Spell(item.data,spellModalController)}
-          numColumns={2}
-        />
-      </>
-    );
+  let spellData=spells["level"+show]
+  let data=[]
+  spellData.forEach((e,i)=>{data.push({data:e,key:i})})
+  return (
+    <>
+      <ListHeader title={titles[show]}/>
+      <FlatList 
+        data={data}
+        renderItem={({item})=>Spell(item.data,spellModalController)}
+        numColumns={2}
+      />
+    </>
+  );
 }
 
 function Spell(spellData,controller){
   let spellType=spellData.types.split(" ")[1]
-  function handlePress() {controller(true,spellData)}
   return(
-    <TouchableOpacity style={[styles.flexRow,styles.spell,styles[spellType]]} onPressOut={handlePress()} >
-      <Image style={styles.normalImage} source={spellImages[spellType]}></Image>
+    <TouchableOpacity style={[styles.flexRow,styles.spell,styles[spellType]]} onPress={()=>{controller(true,spellData)}} >
+      <Image style={styles.image} source={spellImages[spellType]}></Image>
       <Text style={[styles.spellName,]}>{spellData.name}</Text>
     </TouchableOpacity>
   );
@@ -50,7 +49,7 @@ const styles=StyleSheet.create({
     spellNameBlack:{
         color:"#000"
     },
-    normalImage:{
+    image:{
         height:40,
         width:40,
         resizeMode:"contain"
@@ -66,29 +65,13 @@ const styles=StyleSheet.create({
     flexRow:{
         flexDirection:"row"
     },
-    evocation:{
-        backgroundColor:"#900"
-    },
-    conjuration:{
-        backgroundColor:"#cc0"
-    },
-    transmutation:{
-        backgroundColor:"#606"
-    },
-    necromancy:{
-        backgroundColor:"#222"
-    },
-    divination:{
-        backgroundColor:"#008"
-    },
-    enchantment:{
-        backgroundColor:"#08a"
-    },
-    illusion:{
-        backgroundColor:"#4a5"
-    },
-    abjuration:{
-        backgroundColor:"#0a0"
-    }
+    evocation:{backgroundColor:"#900"},
+    conjuration:{backgroundColor:"#cc0"},
+    transmutation:{backgroundColor:"#606"},
+    necromancy:{backgroundColor:"#222"},
+    divination:{backgroundColor:"#008"},
+    enchantment:{backgroundColor:"#08a"},
+    illusion:{backgroundColor:"#4a5"},
+    abjuration:{backgroundColor:"#0a0"}
   }
 );
