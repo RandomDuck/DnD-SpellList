@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, View, Text, Switch, StyleSheet, TouchableWithoutFeedback } from 'react-native';
+import { Modal, View, Text, Switch, StyleSheet, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import { spellTextColor, spellTypes, classTypes} from './dataHandler';
 
 export default function FilterModal({show,filterModal,filterController}){
@@ -13,6 +13,10 @@ export default function FilterModal({show,filterModal,filterController}){
 
     const [Type, setType] = useState(spellTypes.reduce((o, key) => ({ ...o, [key]: true}), {}))
     const [Class, setClass] = useState(classTypes.reduce((o, key) => ({ ...o, [key]: true}), {}))
+    function filterFill(bool){
+        setType(spellTypes.reduce((o, key) => ({ ...o, [key]: bool}),{}));
+        setClass(classTypes.reduce((o, key) => ({ ...o, [key]: bool}),{}))
+    }
     function typeSet(val,bool){
         let data=Type;
         data[val]=bool
@@ -44,6 +48,10 @@ export default function FilterModal({show,filterModal,filterController}){
                     <View style={styles.objectContainer}>{spellFilters}</View>
                     <Text style={styles.subHeader}>Classes:</Text>
                     <View style={styles.objectContainer}>{classFilters}</View>
+                    <View style={styles.buttonContainer}>
+                        <TouchableOpacity style={styles.button} onPress={()=>filterFill(false)}><Text>Clear filters</Text></TouchableOpacity>
+                        <TouchableOpacity style={styles.button} onPress={()=>filterFill(true)}><Text>Apply all filters</Text></TouchableOpacity>
+                    </View>
                 </View>
             </View>
         </TouchableWithoutFeedback>
@@ -67,6 +75,8 @@ function FilterObject(controller,type,on,index){
 const styles=StyleSheet.create({
         white:{color:"#fff"},
         black:{color:"#000"},
+        buttonContainer:{flexDirection:"row",justifyContent:"space-evenly",marginTop:"2%"},
+        button:{padding:"2%",backgroundColor:"#0af"},
         modalTopView:{
             width:"100%",
             height:"100%",
