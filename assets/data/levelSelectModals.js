@@ -22,7 +22,8 @@ function LevelModal({show,controller,spellController}){
         <Modal
         animationType="slide"
         transparent={false}
-        visible={show} >
+        visible={show}
+        onRequestClose={()=>controller(false)} >
             <TouchableWithoutFeedback onPress={()=>controller(false)}>
                 <View style={styles.levelView}>
                     <Selector controller={controller} spellController={spellController} name={"Cantrips"} value={0}/>

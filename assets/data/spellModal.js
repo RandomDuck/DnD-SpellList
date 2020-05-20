@@ -24,7 +24,8 @@ export default function SpellModal({spell,controller}){
     <Modal
       animationType="slide"
       transparent={true}
-      visible={spell.show} >
+      visible={spell.show} 
+      onRequestClose={()=>controller(false,{name:"",use:[],data:[],level:0,types:""})}>
       <TouchableWithoutFeedback onPress={()=>controller(false,{name:"",use:[],data:[],level:0,types:""})}>
         <View style={[styles.spellView,styles[spellType]]}>
           <View style={styles.spellViewTop}>
