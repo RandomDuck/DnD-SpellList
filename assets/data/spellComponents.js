@@ -44,6 +44,10 @@ function ListHeader(props){
 }
 
 const styles=StyleSheet.create({  
+    spellName:{
+      flexWrap:"wrap",
+      width:"70%"
+    },
     header:{
       backgroundColor:"#353", 
       margin:10, 
