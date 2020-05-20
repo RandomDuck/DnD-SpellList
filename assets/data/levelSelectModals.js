@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, View, Modal, TouchableOpacity, Text, TouchableWithoutFeedback} from 'react-native';
 
-function LevelOpen({controller}){
+function LevelOpen({controller,title}){
     return(
         <TouchableOpacity style={styles.levelOpen} onPress={()=>controller(true)}>
-            <Text style={styles.spacer}>Select spell level</Text>
+            <Text style={styles.spacer}>Sellect spells: {title}</Text>
         </TouchableOpacity>
     );
 }
@@ -44,7 +44,7 @@ function LevelModal({show,controller,spellController}){
 
 const styles=StyleSheet.create({
     levelOpen:{
-        marginTop:"10%",
+        marginTop:"2%",
         backgroundColor:"#aaa",
         marginLeft:"2%",
         marginRight:"2%"

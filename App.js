@@ -5,6 +5,11 @@ import { LevelOpen, LevelModal } from './assets/data/levelSelectModals'
 import FlatSpells from './assets/data/spellComponents';
 import SpellModal from './assets/data/spellModal'
 
+let titles=["Cantrips","Level 1","Level 2","Level 3","Level 4","Level 5","Level 6","Level 7","Level 8","Level 9"]
+// TODO:
+// implement search by name
+// implement dice roller
+// implement "about" section
 
 export default function App() {
 
@@ -21,7 +26,7 @@ export default function App() {
   return (
     <View style={styles.topWrapper}>
       <ImageBackground source={backgroundImg} style={styles.main}>
-        <LevelOpen controller={menuModalController} />
+        <LevelOpen controller={menuModalController} title={titles[spellSelect]} />
         <FlatSpells show={spellSelect} spellModalController={spellModalController}/>
         <SpellModal spell={spellModalActive} controller={spellModalController}/>
         <LevelModal show={menuModalActive} controller={menuModalController} spellController={spellSelectHandler}/>

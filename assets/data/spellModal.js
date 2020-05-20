@@ -78,11 +78,13 @@ const styles=StyleSheet.create({
     spellView:{
       borderRadius:20,
       padding:"4%",
-      margin:"10%",
-      height:"90%"
+      margin:"5%",
+      height:"90%",
+      borderColor:"#f80",
+      borderWidth:1
     },
     evocation:{backgroundColor:"#900"},
-    conjuration:{backgroundColor:"#cc0"},
+    conjuration:{backgroundColor:"#cb0"},
     transmutation:{backgroundColor:"#606"},
     necromancy:{backgroundColor:"#222"},
     divination:{backgroundColor:"#008"},
