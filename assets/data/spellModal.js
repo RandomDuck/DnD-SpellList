@@ -13,7 +13,7 @@ export default function SpellModal({spell,controller}){
   spell.data.use.forEach((e,i)=>use.push(<Text key={i} style={textColor}>{e}</Text>))
   spell.data.data.forEach((e,i)=>data.push(<Text key={i} style={[textColor,{marginTop:"1%"}]}>{e}</Text>))
   let classes=[]
-  types.slice(2,types.length-2).forEach(e=>classes.push(capitalize(e)+", "));
+  types.slice(2,types.length-1).forEach(e=>classes.push(capitalize(e)+", "));
   classes.push(capitalize(types[types.length-1]))
 
   function capitalize(e){
@@ -27,30 +27,34 @@ export default function SpellModal({spell,controller}){
       visible={spell.show} 
       onRequestClose={controllTrigger()}>
       <TouchableWithoutFeedback onPress={controllTrigger()}>
-        <View style={[styles.spellView,styles[spellType]]}>
-          <View style={styles.spellViewTop}>
-            <View>
-              <Text style={textColor}>Name: {spell.data.name}</Text>
-              <Text style={textColor}>Level: {spell.data.level>0?spell.data.level:"Cantrip"}</Text>
-              <Text style={textColor}>Type: {upperSpellType}</Text>
-            </View>
-            <View>
-              <Image style={styles.image} source={spellImages[spellType]}/>
-            </View>
-          </View>
-          <View style={{marginTop:"2%"}}>
-            {use}
-          </View>
-          <Text style={[textColor,{marginTop:"4%"}]}>Description:</Text>
-          <ScrollView> 
-            <TouchableWithoutFeedback onPress={controllTrigger()}>
-              <View onStartShouldSetResponder={() => true}>
-                {data}
+        <View style={{height:"100%",width:"100%"}}>
+          <View style={[styles.spellView,styles[spellType]]}>
+            <View style={styles.spellViewTop}>
+              <View>
+                <Text style={textColor}>Name: {spell.data.name}</Text>
+                <Text style={textColor}>Level: {spell.data.level>0?spell.data.level:"Cantrip"}</Text>
+                <Text style={textColor}>Type: {upperSpellType}</Text>
               </View>
-            </TouchableWithoutFeedback>
-          </ScrollView>
-          <Text style={textColor}>Classes that can use:</Text>
-          <Text style={textColor}>{classes}</Text>
+              <View>
+                <Image style={styles.image} source={spellImages[spellType]}/>
+              </View>
+            </View>
+            <View style={{marginTop:"2%"}}>
+              {use}
+            <Text style={[textColor,{marginTop:"3%"}]}>Classes that can use:</Text>
+            <Text style={textColor}>{classes}</Text>
+            </View>
+            <View style={styles.description}>
+              <Text style={[textColor,{marginTop:"4%"}]}>Description:</Text>
+              <ScrollView> 
+                <TouchableWithoutFeedback onPress={controllTrigger()}>
+                  <View onStartShouldSetResponder={() => true}>
+                    {data}
+                  </View>
+                </TouchableWithoutFeedback>
+              </ScrollView>
+            </View>
+          </View>
         </View>
       </TouchableWithoutFeedback>
     </Modal>
@@ -60,6 +64,7 @@ export default function SpellModal({spell,controller}){
 const styles=StyleSheet.create({
     white:{color:"#fff"},
     black:{color:"#000"},
+    description:{height:"60%"},
     image:{
       height:80,
       width:80,
@@ -73,7 +78,7 @@ const styles=StyleSheet.create({
     spellView:{
       borderRadius:20,
       padding:"4%",
-      margin:"4%",
+      margin:"10%",
       height:"90%"
     },
     evocation:{backgroundColor:"#900"},
