@@ -4,7 +4,7 @@ import { StyleSheet, View, Modal, TouchableOpacity, Text, TouchableWithoutFeedba
 function LevelOpen({controller,title}){
     return(
         <TouchableOpacity style={styles.levelOpen} onPress={()=>controller(true)}>
-            <Text style={styles.spacer}>Sellect spells: {title}</Text>
+            <Text style={styles.spacer}>Spell levels: {title}</Text>
         </TouchableOpacity>
     );
 }
