@@ -44,7 +44,7 @@ export default function FilterModal({show,filterModal,filterController}){
         transparent={true}>
         <TouchableWithoutFeedback onPress={()=>filterModal(false)}>
             <View style={styles.modalTopView}>
-                <View style={styles.modalMain}>
+                <View style={styles.modalMain} onStartShouldSetResponder={() => true}>
                     <Text style={styles.header}>Filter</Text>
                     <Text style={styles.subHeader}>Spell types:</Text>
                     <View style={styles.objectContainer}>{spellFilters}</View>
