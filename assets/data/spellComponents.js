@@ -6,9 +6,8 @@ import { spellList, spellImages, spellTextColor } from './dataHandler'
 let spells={level0:[],level1:[],level2:[],level3:[],level4:[],level5:[],level6:[],level7:[],level8:[],level9:[]};
 spellList.forEach(e=>spells["level"+e.level].push(e))
 
-// export a flatlist of spells dpendant on show prop, each spell can be cloicked for a detaild modal view
+// export a flatlist of spells dependant on show prop, each spell can be clicked for a detaild modal view
 export default function FlatSpell({show, spellModalController, filters, search}) {
-
   let spellData=spells["level"+show]
   spellData=spellData.filter((e)=>String(e.name).toLowerCase().includes(String(search).toLowerCase()))
   let data=[]
