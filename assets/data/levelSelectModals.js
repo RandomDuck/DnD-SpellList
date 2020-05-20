@@ -21,7 +21,7 @@ function LevelModal({show,controller,spellController}){
     return(
         <Modal
         animationType="slide"
-        transparent={true}
+        transparent={false}
         visible={show} >
             <TouchableWithoutFeedback onPress={()=>controller(false)}>
                 <View style={styles.levelView}>
@@ -44,7 +44,9 @@ function LevelModal({show,controller,spellController}){
 const styles=StyleSheet.create({
     levelOpen:{
         marginTop:"10%",
-        backgroundColor:"#aaa"
+        backgroundColor:"#aaa",
+        marginLeft:"2%",
+        marginRight:"2%"
     },
     selector:{
       padding:"2%",
@@ -62,10 +64,8 @@ const styles=StyleSheet.create({
     levelView:{
         alignContent:"center",
         justifyContent:"center",
-        borderRadius:20,
         padding:"4%",
-        margin:"4%",
-        height:"90%",
+        height:"100%",
         backgroundColor:"#333"
     }
 });
