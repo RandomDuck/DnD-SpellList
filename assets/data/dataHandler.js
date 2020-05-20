@@ -20,7 +20,7 @@ const spellTypes=[
     "transmutation"
 ]
 
-const classType=[
+const classTypes=[
     "bard",
     "cleric",
     "druid",
@@ -45,4 +45,4 @@ const spellImages={
 const backgroundImg=require("../_img/Background.png");
 const spellList=require("./spells.json");
 
-export {spellImages,classType,spellTypes,spellList,backgroundImg,spellTextColor}
+export {spellImages,classTypes,spellTypes,spellList,backgroundImg,spellTextColor}
