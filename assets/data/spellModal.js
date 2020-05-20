@@ -19,14 +19,14 @@ export default function SpellModal({spell,controller}){
   function capitalize(e){
     return String(e).charAt(0).toUpperCase()+String(e).slice(1)
   }
-
+  const controllTrigger=()=>()=>controller(false,{name:"",use:[],data:[],level:0,types:""})
   return(
     <Modal
       animationType="slide"
       transparent={true}
       visible={spell.show} 
-      onRequestClose={()=>controller(false,{name:"",use:[],data:[],level:0,types:""})}>
-      <TouchableWithoutFeedback onPress={()=>controller(false,{name:"",use:[],data:[],level:0,types:""})}>
+      onRequestClose={controllTrigger()}>
+      <TouchableWithoutFeedback onPress={controllTrigger()}>
         <View style={[styles.spellView,styles[spellType]]}>
           <View style={styles.spellViewTop}>
             <View>
@@ -43,9 +43,11 @@ export default function SpellModal({spell,controller}){
           </View>
           <Text style={[textColor,{marginTop:"4%"}]}>Description:</Text>
           <ScrollView> 
-            <View onStartShouldSetResponder={() => true}>
-              {data}
-            </View>
+            <TouchableWithoutFeedback onPress={controllTrigger()}>
+              <View onStartShouldSetResponder={() => true}>
+                {data}
+              </View>
+            </TouchableWithoutFeedback>
           </ScrollView>
           <Text style={textColor}>Classes that can use:</Text>
           <Text style={textColor}>{classes}</Text>
