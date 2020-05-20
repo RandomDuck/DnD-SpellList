@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Modal, TouchableOpacity, Text, TouchableWithoutFeedback, ScrollView, Image } from 'react-native';
-import { spellImages, spellTextColor, classType } from "./dataHandler"
+import { StyleSheet, View, Modal, Text, TouchableWithoutFeedback, ScrollView, Image } from 'react-native';
+import { spellImages, spellTextColor } from "./dataHandler"
 
 export default function SpellModal({spell,controller}){
 
