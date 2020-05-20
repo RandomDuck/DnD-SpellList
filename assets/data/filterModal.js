@@ -13,8 +13,10 @@ export default function FilterModal({show,filterModal,filterController}){
 
     const [Type, setType] = useState(spellTypes.reduce((o, key) => ({ ...o, [key]: true}), {}))
     const [Class, setClass] = useState(classTypes.reduce((o, key) => ({ ...o, [key]: true}), {}))
-    function filterFill(bool){
+    function filterFillType(bool){
         setType(spellTypes.reduce((o, key) => ({ ...o, [key]: bool}),{}));
+    }
+    function filterFillClass(bool){
         setClass(classTypes.reduce((o, key) => ({ ...o, [key]: bool}),{}))
     }
     function typeSet(val,bool){
@@ -46,11 +48,15 @@ export default function FilterModal({show,filterModal,filterController}){
                     <Text style={styles.header}>Filter</Text>
                     <Text style={styles.subHeader}>Spell types:</Text>
                     <View style={styles.objectContainer}>{spellFilters}</View>
+                    <View style={styles.buttonContainer}>
+                        <TouchableOpacity style={styles.button} onPress={()=>filterFillType(false)}><Text>Clear filters</Text></TouchableOpacity>
+                        <TouchableOpacity style={styles.button} onPress={()=>filterFillType(true)}><Text>Apply all filters</Text></TouchableOpacity>
+                    </View>
                     <Text style={styles.subHeader}>Classes:</Text>
                     <View style={styles.objectContainer}>{classFilters}</View>
                     <View style={styles.buttonContainer}>
-                        <TouchableOpacity style={styles.button} onPress={()=>filterFill(false)}><Text>Clear filters</Text></TouchableOpacity>
-                        <TouchableOpacity style={styles.button} onPress={()=>filterFill(true)}><Text>Apply all filters</Text></TouchableOpacity>
+                        <TouchableOpacity style={styles.button} onPress={()=>filterFillClass(false)}><Text>Clear filters</Text></TouchableOpacity>
+                        <TouchableOpacity style={styles.button} onPress={()=>filterFillClass(true)}><Text>Apply all filters</Text></TouchableOpacity>
                     </View>
                 </View>
             </View>
