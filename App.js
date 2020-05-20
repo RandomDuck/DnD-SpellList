@@ -5,10 +5,10 @@ import { LevelOpen, LevelModal } from './assets/data/levelSelectModals'
 import FlatSpells from './assets/data/spellComponents';
 import SpellModal from './assets/data/spellModal'
 import SearchBar from './assets/data/filters';
+import FilterModal from './assets/data/filterModal';
 
 let titles=["Cantrips","Level 1","Level 2","Level 3","Level 4","Level 5","Level 6","Level 7","Level 8","Level 9"]
 // TODO:
-// implement search by name
 // implement dice roller
 // implement "about" section
 
@@ -29,8 +29,7 @@ export default function App() {
   function searchController(value) {searchSet(value)}
   function filterController(object) {setFilterTypes(object)}
   function filterModalController(bool) {changeFilterModalActive(bool)}
-  
-  //filterController={filterController} 
+ 
   return (
     <View style={styles.topWrapper}>
       <ImageBackground source={backgroundImg} style={styles.main}>
@@ -38,6 +37,7 @@ export default function App() {
         <SearchBar controller={searchController} filterModal={filterModalController} />
         <FlatSpells filters={filterTypes} search={searchValue} show={spellSelect} spellModalController={spellModalController}/>
         <SpellModal spell={spellModalActive} controller={spellModalController}/>
+        <FilterModal show={filterModalActive} filterModal={filterModalController} filterController={filterController}/>
         <LevelModal show={menuModalActive} controller={menuModalController} spellController={spellSelectHandler}/>
       </ImageBackground>
     </View>
