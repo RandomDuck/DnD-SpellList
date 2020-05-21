@@ -8,8 +8,21 @@ spellList.forEach(e=>spells["level"+e.level].push(e))
 
 // export a flatlist of spells dependant on show prop, each spell can be clicked for a detaild modal view
 export default function FlatSpell({show, spellModalController, filters, search}) {
-  let spellData=spells["level"+show]
-  spellData=spellData.filter((e)=>String(e.name).toLowerCase().includes(String(search).toLowerCase()))
+  let spellData=filterData(spells["level"+show])
+
+  function filterData(dataToFilter){
+    dataToFilter=dataToFilter.filter((e)=>String(e.name).toLowerCase().includes(String(search).toLowerCase()))
+    dataToFilter=dataToFilter.filter((e)=>filters.types.includes(e.types.split(" ")[1].toLowerCase()))
+    dataToFilter=dataToFilter.filter((e)=>checkClasses(e))
+    return dataToFilter
+  }
+
+  function checkClasses(e){
+    let bool = false;
+    filters.classes.forEach(x=>{if(e.types.toLowerCase().includes(String(x).toLowerCase())){bool=true}})
+    return bool
+  }
+
   let data=[]
   spellData.forEach((e,i)=>{data.push({data:e,key:i})})
   return (

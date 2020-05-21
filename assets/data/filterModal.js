@@ -10,23 +10,33 @@ export default function FilterModal({show,filterModal,filterController}){
         for(let i in e){if(e[i]==true){array.push(i)}}
         return array;
     }
-
+    
     const [Type, setType] = useState(spellTypes.reduce((o, key) => ({ ...o, [key]: true}), {}))
     const [Class, setClass] = useState(classTypes.reduce((o, key) => ({ ...o, [key]: true}), {}))
     function filterFillType(bool){
-        setType(spellTypes.reduce((o, key) => ({ ...o, [key]: bool}),{}));
+        setType(spellTypes.reduce((o, key) => ({ ...o, [key]: bool}), {}))
+        if (bool) {
+            filterController({classes:getStrings(Class),types:spellTypes})
+        }else{
+            filterController({classes:getStrings(Class),types:[]})
+        }
     }
     function filterFillClass(bool){
-        setClass(classTypes.reduce((o, key) => ({ ...o, [key]: bool}),{}))
+        setClass(classTypes.reduce((o, key) => ({ ...o, [key]: bool}), {}))
+        if (bool) {
+            filterController({classes:classTypes,types:getStrings(Type)})
+        }else{
+            filterController({classes:[],types:getStrings(Type)})
+        }
     }
     function typeSet(val,bool){
-        let data=Type;
+        let data=Type
         data[val]=bool
         setType(data)
         filterUpdate()
     }
     function classSet(val,bool){
-        let data=Class;
+        let data=Class
         data[val]=bool
         setClass(data)
         filterUpdate()
@@ -65,7 +75,7 @@ export default function FilterModal({show,filterModal,filterController}){
     );
 }
 
-function FilterObject(controller,type,on,index){
+function FilterObject(controller,type,on,index,filterUpdate){
     function capitalize(e){return String(e).charAt(0).toUpperCase()+String(e).slice(1)}
     return(
         <View style={[styles[type],styles.object]} key={index}>

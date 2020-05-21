@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { ImageBackground, View, StyleSheet} from 'react-native';
-import { backgroundImg } from "./assets/data/dataHandler"
+import { backgroundImg, classTypes, spellTypes } from "./assets/data/dataHandler"
 import { LevelOpen, LevelModal } from './assets/data/levelSelectModals'
 import FlatSpells from './assets/data/spellComponents';
 import SpellModal from './assets/data/spellModal'
@@ -11,12 +11,13 @@ let titles=["Cantrips","Level 1","Level 2","Level 3","Level 4","Level 5","Level 
 // TODO:
 // implement dice roller
 // implement "about" section
+// implement actual filtering in spellComponent.js
 
 export default function App() {
 
   // declare state trackers
   const [spellSelect,setSpellSelect] = useState(0)
-  const [filterTypes,setFilterTypes] = useState({classes:[],types:[]})
+  const [filterTypes,setFilterTypes] = useState({classes:classTypes,types:spellTypes})
   const [searchValue,searchSet] = useState("")
   const [spellModalActive,changeSpellModalActive] = useState({show:false,data:{name:"",use:[],data:[],level:0,types:""}})
   const [menuModalActive,changeMenuModalActive] = useState(false)
@@ -35,9 +36,9 @@ export default function App() {
       <ImageBackground source={backgroundImg} style={styles.main}>
         <LevelOpen controller={menuModalController} title={titles[spellSelect]} />
         <SearchBar controller={searchController} filterModal={filterModalController} />
-        <FlatSpells filters={filterTypes} search={searchValue} show={spellSelect} spellModalController={spellModalController}/>
+        <FlatSpells filters={filterTypes} search={searchValue} show={spellSelect} spellModalController={spellModalController} />
         <SpellModal spell={spellModalActive} controller={spellModalController}/>
-        <FilterModal show={filterModalActive} filterModal={filterModalController} filterController={filterController}/>
+        <FilterModal show={filterModalActive} filterModal={filterModalController} filterController={filterController} />
         <LevelModal show={menuModalActive} controller={menuModalController} spellController={spellSelectHandler}/>
       </ImageBackground>
     </View>
