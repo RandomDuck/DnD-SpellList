@@ -75,7 +75,7 @@ export default function FilterModal({show,filterModal,filterController}){
     );
 }
 
-function FilterObject(controller,type,on,index,filterUpdate){
+function FilterObject(controller,type,on,index){
     function capitalize(e){return String(e).charAt(0).toUpperCase()+String(e).slice(1)}
     return(
         <View style={[styles[type],styles.object]} key={index}>
