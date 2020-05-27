@@ -1,5 +1,5 @@
 import React, {useState,useRef} from "react";
-import { View, Modal, StyleSheet, TouchableWithoutFeedback, TouchableOpacity, Image, Text, TextInput, ScrollView } from 'react-native';
+import { View, Modal, StyleSheet, TouchableWithoutFeedback, TouchableOpacity, Image, Text, TextInput, ScrollView, Linking } from 'react-native';
 
 function TouchOutsideModal(props){
     return(
@@ -40,15 +40,19 @@ function AboutModal(props){
             style={styles.aboutStyle}
             dissmisOnPress={true}>
             <>
-                <Text style={styles.aboutHeader}>Hello</Text>
+                <Text style={styles.aboutHeader}>About</Text>
                 <Text style={styles.aboutText}>
-                    Text in here.........
-                    lorem ipsum dolor sit ammet consecutor
-                    lorem ipsum dolor sit ammet consecutor
-                    lorem ipsum dolor sit ammet consecutor
-                    lorem ipsum dolor sit ammet consecutor
-                    lorem ipsum dolor sit ammet consecutor
-                    lorem ipsum dolor sit ammet consecutor
+                    This is a fun little app I made to help all the D&D DM's and players out there.
+                </Text>
+                <Text style={styles.aboutText}>
+                    It's not easy keeping track of all the spells in 5e. And its a pain to look them up in the books mid session.  
+                </Text>
+                <Text style={styles.aboutText}>
+                    This app is entirley free. No ads ither. However if you like it, feel free to send me a little thank you with the link below.
+                </Text>
+                <Text style={{color:"#05a",alignSelf:"center",textAlign:"center",padding:"2%",fontSize:18}}
+                    onPress={() => Linking.openURL('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EXT5YBM8LSE4E&source=url')}>
+                    Buy the dev a coffee
                 </Text>
             </>
         </TouchOutsideModal>
@@ -137,12 +141,13 @@ const styles=StyleSheet.create({
         },
         aboutStyle:{
             backgroundColor:"#444",
-            padding:"3%",
-            margin:"20%",
+            padding:"6%",
+            paddingTop:"3%",
+            margin:"15%",
             marginBottom:0
         },
         aboutText:{
-            textAlign:"center",
+            paddingBottom:"3%",
             color:"white",
             fontSize:14
         },
