@@ -44,23 +44,22 @@ function LevelModal({show,controller,spellController}){
 
 const styles=StyleSheet.create({
     levelOpen:{
-        marginTop:"2%",
         backgroundColor:"#aaa",
         marginLeft:"2%",
         marginRight:"2%"
     },
     selector:{
-      padding:"2%",
-      margin:"2%",
-      backgroundColor:"#aaa",
-      color:"#000"
+        padding:"2%",
+        margin:"2%",
+        backgroundColor:"#aaa",
+        color:"#000"
     },
     spacer:{
-      padding:"2%",
-      textAlign:"center",
-      margin:"2%",
-      backgroundColor:"#222",
-      color:"#fff"
+        padding:"2%",
+        textAlign:"center",
+        margin:"2%",
+        backgroundColor:"#222",
+        color:"#fff"
     },
     levelView:{
         alignContent:"center",

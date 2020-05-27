@@ -31,8 +31,11 @@ const styles=StyleSheet.create({
         mainContainer:{
             alignItems:"center",
             margin:"2%",
+            marginTop:0,
             backgroundColor:"#111",
             borderRadius:10,
+            borderTopLeftRadius:0,
+            borderTopRightRadius:0,
             padding:"2%"
         },
         filterTouch:{
