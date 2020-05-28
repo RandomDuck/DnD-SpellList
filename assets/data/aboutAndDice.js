@@ -1,5 +1,6 @@
 import React, {useState,useRef} from "react";
 import { View, Modal, StyleSheet, TouchableWithoutFeedback, TouchableOpacity, Image, Text, TextInput, ScrollView, Linking } from 'react-native';
+import {settings} from "./dataHandler"
 
 function TouchOutsideModal(props){
     return(
@@ -51,7 +52,7 @@ function AboutModal(props){
                     This app is entirley free. No ads ither. However if you like it, feel free to send me a little thank you with the link below.
                 </Text>
                 <Text style={{color:"#05a",alignSelf:"center",textAlign:"center",padding:"2%",fontSize:18}}
-                    onPress={() => Linking.openURL('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=EXT5YBM8LSE4E&source=url')}>
+                    onPress={() => Linking.openURL(settings.donateUrl)}>
                     Buy the dev a coffee
                 </Text>
             </>

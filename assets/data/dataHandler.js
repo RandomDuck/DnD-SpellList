@@ -44,5 +44,6 @@ const spellImages={
 
 const backgroundImg=require("../_img/Background.png");
 const spellList=require("./spells.json");
+const settings=require("./settings.json");
 
-export {spellImages,classTypes,spellTypes,spellList,backgroundImg,spellTextColor}
+export {spellImages,classTypes,spellTypes,spellList,backgroundImg,spellTextColor,settings}
