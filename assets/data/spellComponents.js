@@ -39,17 +39,8 @@ function Spell(spellData,controller){
   let textColor=styles[spellTextColor[spellType]]
   return(
     <TouchableOpacity style={[styles.flexRow,styles.spell,styles[spellType]]} onPress={()=>{controller(true,spellData)}} >
-      {/* <Image style={styles.image} source={spellImages[spellType]}></Image> */}
       <Text style={[{marginTop:5,paddingBottom:5},styles.spellName,textColor]}>{spellData.name}</Text>
     </TouchableOpacity>
-  );
-}
-
-function ListHeader(props){
-  return(
-    <>
-      <Text style={styles.header}>{props.title}</Text>
-    </>
   );
 }
 
