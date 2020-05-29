@@ -46,10 +46,10 @@ function AboutModal(props){
                     This is a fun little app I made to help all the D&D DM's and players out there.
                 </Text>
                 <Text style={styles.aboutText}>
-                    It's not easy keeping track of all the spells in 5e. And its a pain to look them up in the books mid session.  
+                    It's not easy keeping track of all the spells in 5e. And it's a pain to look them up in the books mid session.  
                 </Text>
                 <Text style={styles.aboutText}>
-                    This app is entirley free. No ads ither. However if you like it, feel free to send me a little thank you with the link below.
+                    This app is entirley free. No ads either. However if you like it, feel free to send me a little thank you with the link below.
                 </Text>
                 <Text style={{color:"#05a",alignSelf:"center",textAlign:"center",padding:"2%",fontSize:18}}
                     onPress={() => Linking.openURL(settings.donateUrl)}>
