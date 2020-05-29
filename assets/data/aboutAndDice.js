@@ -145,7 +145,8 @@ const styles=StyleSheet.create({
             padding:"6%",
             paddingTop:"3%",
             margin:"15%",
-            marginBottom:0
+            marginBottom:0,
+            borderRadius:10
         },
         aboutText:{
             paddingBottom:"3%",
