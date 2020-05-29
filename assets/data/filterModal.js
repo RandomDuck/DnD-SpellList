@@ -55,14 +55,14 @@ export default function FilterModal({show,filterModal,filterController}){
         <TouchableWithoutFeedback onPress={()=>filterModal(false)}>
             <View style={styles.modalTopView}>
                 <View style={styles.modalMain} onStartShouldSetResponder={() => true}>
-                    <Text style={styles.header}>Filter</Text>
-                    <Text style={styles.subHeader}>Spell types:</Text>
+                    <Text style={[styles.header,styles.white]}>Filter</Text>
+                    <Text style={[styles.subHeader,styles.white]}>Spell types:</Text>
                     <View style={styles.objectContainer}>{spellFilters}</View>
                     <View style={styles.buttonContainer}>
                         <TouchableOpacity style={styles.button} onPress={()=>filterFillType(false)}><Text>Clear filters</Text></TouchableOpacity>
                         <TouchableOpacity style={styles.button} onPress={()=>filterFillType(true)}><Text>Apply all filters</Text></TouchableOpacity>
                     </View>
-                    <Text style={styles.subHeader}>Classes:</Text>
+                    <Text style={[styles.subHeader,styles.white]}>Classes:</Text>
                     <View style={styles.objectContainer}>{classFilters}</View>
                     <View style={styles.buttonContainer}>
                         <TouchableOpacity style={styles.button} onPress={()=>filterFillClass(false)}><Text>Clear filters</Text></TouchableOpacity>
@@ -100,7 +100,7 @@ const styles=StyleSheet.create({
             alignItems:"center"
         },
         modalMain:{
-            backgroundColor:"#fa0",
+            backgroundColor:"#444",
             padding:"2%",
             borderRadius:20
         },
