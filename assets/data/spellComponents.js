@@ -39,8 +39,8 @@ function Spell(spellData,controller){
   let textColor=styles[spellTextColor[spellType]]
   return(
     <TouchableOpacity style={[styles.flexRow,styles.spell,styles[spellType]]} onPress={()=>{controller(true,spellData)}} >
-      <Image style={styles.image} source={spellImages[spellType]}></Image>
-      <Text style={[styles.spellName,textColor]}>{spellData.name}</Text>
+      {/* <Image style={styles.image} source={spellImages[spellType]}></Image> */}
+      <Text style={[{marginTop:5,paddingBottom:5},styles.spellName,textColor]}>{spellData.name}</Text>
     </TouchableOpacity>
   );
 }
@@ -80,7 +80,7 @@ const styles=StyleSheet.create({
     spell:{
         alignItems:"center",
         padding:10, 
-        justifyContent:"space-between",
+        justifyContent:"center",
         width:"48%",
         borderRadius:12,
         marginLeft:"1%",
