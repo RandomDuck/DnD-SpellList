@@ -23,11 +23,11 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.DucksEntertainment.DnDSpellList",
-      "buildNumber": "1.0.0"
+      "buildNumber": "1.2.0"
     },
     "android":{
       "package": "com.DucksEntertainment.DnDSpellList",
-      "versionCode": 1
+      "versionCode": 2
     }
   }
 }

@@ -11,8 +11,8 @@ function LevelOpen({controller,title}){
 
 function Selector({controller,spellController,name,value}){
     return(
-        <TouchableOpacity style={styles.selector} onPress={()=>{spellController(value),controller(false)}}>
-            <Text style={{textAlign:"center"}}>{name}</Text>
+        <TouchableOpacity style={styles.selectorMain} onPress={()=>{spellController(value),controller(false)}}>
+            <Text style={styles.selector}>{name}</Text>
         </TouchableOpacity>
     ); 
 }
@@ -26,6 +26,7 @@ function LevelModal({show,controller,spellController}){
         onRequestClose={()=>controller(false)} >
             <TouchableWithoutFeedback onPress={()=>controller(false)}>
                 <View style={styles.levelView}>
+                    <Selector controller={controller} spellController={spellController} name={"All"} value={10}/>
                     <Selector controller={controller} spellController={spellController} name={"Cantrips"} value={0}/>
                     <Selector controller={controller} spellController={spellController} name={"Level 1"} value={1}/>
                     <Selector controller={controller} spellController={spellController} name={"Level 2"} value={2}/>
@@ -48,11 +49,13 @@ const styles=StyleSheet.create({
         marginLeft:"2%",
         marginRight:"2%"
     },
+    selectorMain:{padding:"2%"},
     selector:{
         padding:"2%",
-        margin:"2%",
         backgroundColor:"#aaa",
-        color:"#000"
+        color:"#000",
+        textAlign:"center"
+
     },
     spacer:{
         padding:"2%",

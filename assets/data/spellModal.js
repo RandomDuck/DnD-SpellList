@@ -71,7 +71,7 @@ const styles=StyleSheet.create({
       resizeMode:"contain"
     },
     spellViewTop:{
-      justifyContent:"center",
+      justifyContent:"space-between",
       flexDirection:"row",
       alignItems:"center"
     },

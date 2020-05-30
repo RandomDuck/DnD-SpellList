@@ -3,7 +3,7 @@ import React from 'react';
 import { Text, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
 import { spellList, spellImages, spellTextColor } from './dataHandler'
 
-let spells={level0:[],level1:[],level2:[],level3:[],level4:[],level5:[],level6:[],level7:[],level8:[],level9:[]};
+let spells={level0:[],level1:[],level2:[],level3:[],level4:[],level5:[],level6:[],level7:[],level8:[],level9:[],level10:spellList};
 spellList.forEach(e=>spells["level"+e.level].push(e))
 
 // export a flatlist of spells dependant on show prop, each spell can be clicked for a detaild modal view

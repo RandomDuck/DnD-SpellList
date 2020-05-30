@@ -102,7 +102,9 @@ const styles=StyleSheet.create({
         modalMain:{
             backgroundColor:"#444",
             padding:"2%",
-            borderRadius:20
+            borderRadius:20,
+            borderColor:"#000",
+            borderWidth:3
         },
         header:{
             textAlign:"center",

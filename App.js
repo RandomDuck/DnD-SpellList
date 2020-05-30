@@ -8,7 +8,7 @@ import SpellModal from './assets/data/spellModal'
 import SearchBar from './assets/data/filters';
 import FilterModal from './assets/data/filterModal';
 
-let titles=["Cantrips","Level 1","Level 2","Level 3","Level 4","Level 5","Level 6","Level 7","Level 8","Level 9"]
+let titles=["Cantrips","Level 1","Level 2","Level 3","Level 4","Level 5","Level 6","Level 7","Level 8","Level 9","All"]
 // TODO:
 // implement dice roller
 // implement "about" section
@@ -110,11 +110,13 @@ const styles=StyleSheet.create({
       resizeMode:"contain",
       justifyContent:"space-around",
       flexDirection:"column",
-      height:"103%"
+      paddingBottom:"35.5%",
+      height:"120%"
     },  
     topWrapper:{
       paddingTop:"7%",
-      backgroundColor:"#a60"
+      backgroundColor:"#a60",
+      height:"120%"
     }
   }
 );

@@ -43,13 +43,13 @@ function AboutModal(props){
             <>
                 <Text style={styles.aboutHeader}>About</Text>
                 <Text style={styles.aboutText}>
-                    This is a fun little app I made to help all the D&D DM's and players out there.
+                    This is a fun little app I made to help all the D&D DMs and players out there.
                 </Text>
                 <Text style={styles.aboutText}>
                     It's not easy keeping track of all the spells in 5e. And it's a pain to look them up in the books mid session.  
                 </Text>
                 <Text style={styles.aboutText}>
-                    This app is entirley free. No ads either. However if you like it, feel free to send me a little thank you with the link below.
+                    This app is entirely free. No ads either. However if you like it, feel free to send me a little thank you with the link below.
                 </Text>
                 <Text style={{color:"#05a",alignSelf:"center",textAlign:"center",padding:"2%",fontSize:18}}
                     onPress={() => Linking.openURL(settings.donateUrl)}>
@@ -64,7 +64,11 @@ function NumberInput(props){
     return(
         <View style={styles.numInpMain}>
             <Text style={styles.numInpText}>{props.text} </Text>
-            <TextInput style={styles.numberInput} keyboardType={"numeric"} value={String(props.value)} onChangeText={(e)=>props.controller(e>props.maxValue?props.maxValue:e)}/>
+            <TextInput 
+                style={styles.numberInput} 
+                keyboardType={"numeric"} 
+                value={String(props.value)} 
+                onChangeText={(e)=>props.controller(e>props.maxValue||e<-props.maxValue?e>props.maxValue?props.maxValue:-props.maxValue:e)}/>
         </View>
     )
 }
@@ -80,6 +84,7 @@ function DiceButton(props){
         }
         let data=`${props.name} roll: ${value}`
         if(mod>0){data+=` +${mod} (${value+mod})`}
+        if(mod<0){data+=` ${mod} (${value+mod})`}
         props.controller(data)
     }
 
@@ -119,9 +124,9 @@ function DiceModal(props){
             dissmisOnPress={false}>
             <>
                 <Text style={styles.aboutHeader}>Dice Roller</Text>
-                <NumberInput text={"Dice modifire: (optional)"} controller={diceModer} value={diceMod} maxValue={150}/>
+                <NumberInput text={"Modifire: (optional)"} controller={diceModer} value={diceMod} maxValue={500}/>
                 <View style={styles.diceButtonContainer}>
-                    <DiceButton name={"Coin"} controller={addRoll} mod={getMod} num={2} style={{backgroundColor:"#205"}} coinFlip={true}/>
+                    <DiceButton name={"Coin"} controller={addRoll} mod={getMod} num={2} style={{backgroundColor:"#207"}} coinFlip={true}/>
                     {dices}
                 </View>
                 <Text style={{alignSelf:"center",color:"white",fontSize:20}}>Result:</Text>
@@ -146,7 +151,9 @@ const styles=StyleSheet.create({
             paddingTop:"3%",
             margin:"15%",
             marginBottom:0,
-            borderRadius:10
+            borderRadius:10,
+            borderColor:"#000",
+            borderWidth:2
         },
         aboutText:{
             paddingBottom:"3%",
@@ -165,7 +172,9 @@ const styles=StyleSheet.create({
             margin:"5%",
             marginTop:"20%",
             marginBottom:"1%",
-            paddingTop:"2%"
+            paddingTop:"2%",
+            borderColor:"#000",
+            borderWidth:2
         },
         diceText:{
             color:"white",
@@ -176,10 +185,12 @@ const styles=StyleSheet.create({
             marginBottom:"2%",
             marginTop:"2%",
             width:"20%",
-            paddingBottom:"3%",
-            paddingTop:"3%",
+            paddingBottom:"2%",
+            paddingTop:"2%",
             borderRadius:19,
-            backgroundColor:"#333"
+            backgroundColor:"#333",
+            borderColor:"#111",
+            borderWidth:1
         },
         numberInput:{ 
             backgroundColor:"#aaa",
