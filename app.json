@@ -27,7 +27,8 @@
     },
     "android":{
       "package": "com.DucksEntertainment.DnDSpellList",
-      "versionCode": 2
+      "versionCode": 1,
+      "permissions":[]
     }
   }
 }
