@@ -9,27 +9,54 @@ const spellTextColor={
     transmutation:'white'
 }
 
-const spellTypes=[
-    'abjuration',
-    'conjuration',
-    'divination',
-    'enchantment',
-    'evocation',
-    'illusion',
-    'necromancy',
-    'transmutation'
-]
+const spellTypes={
+    s5e:[
+        'abjuration',
+        'conjuration',
+        'divination',
+        'enchantment',
+        'evocation',
+        'illusion',
+        'necromancy',
+        'transmutation'
+    ],
+    s35e:[
+        'abjuration',
+        'conjuration',
+        'divination',
+        'enchantment',
+        'evocation',
+        'illusion',
+        'necromancy',
+        'transmutation',
+        'universal'
+    ]
+}
 
-const classTypes=[
-    'bard',
-    'cleric',
-    'druid',
-    'paladin',
-    'ranger',
-    'sorcerer',
-    'warlock',
-    'wizard'
-]
+const classTypes={
+    s5e:[
+        'bard',
+        'cleric',
+        'druid',
+        'paladin',
+        'ranger',
+        'sorcerer',
+        'warlock',
+        'wizard'
+    ],
+    s35e:[
+        'bard',
+        'cleric',
+        'druid',
+        'invoker',
+        'paladin',
+        'shaman',
+        'sorcerer',
+        'swordmage',
+        'warlock',
+        'wizard'
+    ]
+}
 
 const spellImages={
     abjuration:require('../_img/SpellBackgrounds/abjuration.png'),
