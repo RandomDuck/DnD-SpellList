@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Modal, View, Text, Switch, StyleSheet, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import { spellTextColor, spellTypes, classTypes} from './dataHandler';
 
-export default function FilterModal({show,filterModal,filterController}){
+export default function FilterModal({show,edition,filterModal,filterController}){
+    let spellTypesList= spellTypes[edition];
+    let classTypesList= classTypes[edition];
 
     const filterUpdate = ()=>filterController({classes:getStrings(Class),types:getStrings(Type)})
     function getStrings(e){
@@ -11,20 +13,20 @@ export default function FilterModal({show,filterModal,filterController}){
         return array;
     }
     
-    const [Type, setType] = useState(spellTypes.reduce((o, key) => ({ ...o, [key]: true}), {}))
-    const [Class, setClass] = useState(classTypes.reduce((o, key) => ({ ...o, [key]: true}), {}))
+    const [Type, setType] = useState(spellTypesList.reduce((o, key) => ({ ...o, [key]: true}), {}))
+    const [Class, setClass] = useState(classTypesList.reduce((o, key) => ({ ...o, [key]: true}), {}))
     function filterFillType(bool){
-        setType(spellTypes.reduce((o, key) => ({ ...o, [key]: bool}), {}))
+        setType(spellTypesList.reduce((o, key) => ({ ...o, [key]: bool}), {}))
         if (bool) {
-            filterController({classes:getStrings(Class),types:spellTypes})
+            filterController({classes:getStrings(Class),types:spellTypesList})
         }else{
             filterController({classes:getStrings(Class),types:[]})
         }
     }
     function filterFillClass(bool){
-        setClass(classTypes.reduce((o, key) => ({ ...o, [key]: bool}), {}))
+        setClass(classTypesList.reduce((o, key) => ({ ...o, [key]: bool}), {}))
         if (bool) {
-            filterController({classes:classTypes,types:getStrings(Type)})
+            filterController({classes:classTypesList,types:getStrings(Type)})
         }else{
             filterController({classes:[],types:getStrings(Type)})
         }
@@ -44,8 +46,8 @@ export default function FilterModal({show,filterModal,filterController}){
     
     let spellFilters=[]
     let classFilters=[]
-    spellTypes.forEach((e,i)=>{spellFilters.push(FilterObject(typeSet,e,Type[e],e+i))})
-    classTypes.forEach((e,i)=>{classFilters.push(FilterObject(classSet,e,Class[e],e+i))})
+    spellTypesList.forEach((e,i)=>{spellFilters.push(FilterObject(typeSet,e,Type[e],e+i))})
+    classTypesList.forEach((e,i)=>{classFilters.push(FilterObject(classSet,e,Class[e],e+i))})
     return(
     <Modal 
         visible={show} 
@@ -78,7 +80,7 @@ export default function FilterModal({show,filterModal,filterController}){
 function FilterObject(controller,type,on,index){
     function capitalize(e){return String(e).charAt(0).toUpperCase()+String(e).slice(1)}
     return(
-        <View style={[styles[type],styles.object]} key={index}>
+        <View style={[styles.class,styles[type],styles.object]} key={index}>
             <Text style={styles[spellTextColor[type]]}>{capitalize(type)}</Text>
             <Switch 
                 trackColor={{ false: '#767577', true: '#81b0ff' }}
@@ -131,14 +133,7 @@ const styles=StyleSheet.create({
             width:'49%',
             marginBottom:'1%'
         },
-        bard:{backgroundColor:'#a60'},
-        cleric:{backgroundColor:'#a60'},
-        druid:{backgroundColor:'#a60'},
-        paladin:{backgroundColor:'#a60'},
-        ranger:{backgroundColor:'#a60'},
-        sorcerer:{backgroundColor:'#a60'},
-        warlock:{backgroundColor:'#a60'},
-        wizard:{backgroundColor:'#a60'},
+        class:{backgroundColor:'#a60'},
         evocation:{backgroundColor:'#900'},
         conjuration:{backgroundColor:'#cb0'},
         transmutation:{backgroundColor:'#606'},

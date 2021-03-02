@@ -18,7 +18,7 @@ export default function App() {
   const [ diceModal, setDiceModal ] = useState(false);
   const [ aboutModal, setAboutModal ] = useState(false);
   const [ spellSelect, setSpellSelect ] = useState(0);
-  const [ filterTypes, setFilterTypes ] = useState({classes:classTypes,types:spellTypes});
+  const [ filterTypes, setFilterTypes ] = useState({classes:classTypes[edition],types:spellTypes[edition]});
   const [ searchValue, searchSet ] = useState('');
   const [ spellModalActive, changeSpellModalActive ] = useState({show:false,data:{name:'',use:[],data:[],level:0,types:''}});
   const [ menuModalActive, changeMenuModalActive ] = useState(false);
@@ -76,7 +76,7 @@ export default function App() {
         <DiceModal controller={diceModalController} visible={diceModal}/>
 
         <SpellModal spell={spellModalActive} controller={spellModalController}/>
-        <FilterModal show={filterModalActive} filterModal={filterModalController} filterController={filterController} />
+        <FilterModal show={filterModalActive} edition={edition} filterModal={filterModalController} filterController={filterController} />
         <LevelModal show={menuModalActive} controller={menuModalController} spellController={spellSelectHandler} names={titles}/>
         <LevelModal show={menuEditionModalActive} controller={menuEditionModalController} spellController={setEdition} names={editions} nameValues={Object.keys(spellList)}/>
       </ImageBackground>
