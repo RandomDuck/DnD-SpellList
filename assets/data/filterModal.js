@@ -50,7 +50,7 @@ export default function FilterModal({show,filterModal,filterController}){
     <Modal 
         visible={show} 
         onRequestClose={()=>filterModal(false)}
-        animationType={"slide"}
+        animationType={'slide'}
         transparent={true}>
         <TouchableWithoutFeedback onPress={()=>filterModal(false)}>
             <View style={styles.modalTopView}>
@@ -81,7 +81,7 @@ function FilterObject(controller,type,on,index){
         <View style={[styles[type],styles.object]} key={index}>
             <Text style={styles[spellTextColor[type]]}>{capitalize(type)}</Text>
             <Switch 
-                trackColor={{ false: "#767577", true: "#81b0ff" }}
+                trackColor={{ false: '#767577', true: '#81b0ff' }}
                 onValueChange={()=>controller(type,!on)}
                 value={on}/>
         </View>
@@ -89,63 +89,63 @@ function FilterObject(controller,type,on,index){
 }
 
 const styles=StyleSheet.create({
-        white:{color:"#fff"},
-        black:{color:"#000"},
-        buttonContainer:{flexDirection:"row",justifyContent:"space-evenly",marginTop:"2%"},
-        button:{padding:"2%",backgroundColor:"#0af"},
+        white:{color:'#fff'},
+        black:{color:'#000'},
+        buttonContainer:{flexDirection:'row',justifyContent:'space-evenly',marginTop:'2%'},
+        button:{padding:'2%',backgroundColor:'#0af'},
         modalTopView:{
-            width:"100%",
-            height:"100%",
-            justifyContent:"center",
-            alignItems:"center"
+            width:'100%',
+            height:'100%',
+            justifyContent:'center',
+            alignItems:'center'
         },
         modalMain:{
-            backgroundColor:"#444",
-            padding:"2%",
+            backgroundColor:'#444',
+            padding:'2%',
             borderRadius:20,
-            borderColor:"#000",
+            borderColor:'#000',
             borderWidth:3
         },
         header:{
-            textAlign:"center",
+            textAlign:'center',
             fontSize:22,
-            fontWeight:"bold"
+            fontWeight:'bold'
         },
         subHeader:{
             fontSize:18,
-            fontWeight:"800",
-            marginTop:"2%"
+            fontWeight:'800',
+            marginTop:'2%'
         },
         objectContainer:{
-            justifyContent:"space-evenly",
-            flexDirection:"row",
-            flexWrap:"wrap",
-            width:"90%"
+            justifyContent:'space-evenly',
+            flexDirection:'row',
+            flexWrap:'wrap',
+            width:'90%'
         },
         object:{
-            alignItems:"center",
-            flexDirection:"row",
-            justifyContent:"space-between",
-            padding:"2%",
+            alignItems:'center',
+            flexDirection:'row',
+            justifyContent:'space-between',
+            padding:'2%',
             borderRadius:10,
-            width:"49%",
-            marginBottom:"1%"
+            width:'49%',
+            marginBottom:'1%'
         },
-        bard:{backgroundColor:"#a60"},
-        cleric:{backgroundColor:"#a60"},
-        druid:{backgroundColor:"#a60"},
-        paladin:{backgroundColor:"#a60"},
-        ranger:{backgroundColor:"#a60"},
-        sorcerer:{backgroundColor:"#a60"},
-        warlock:{backgroundColor:"#a60"},
-        wizard:{backgroundColor:"#a60"},
-        evocation:{backgroundColor:"#900"},
-        conjuration:{backgroundColor:"#cb0"},
-        transmutation:{backgroundColor:"#606"},
-        necromancy:{backgroundColor:"#222"},
-        divination:{backgroundColor:"#008"},
-        enchantment:{backgroundColor:"#08a"},
-        illusion:{backgroundColor:"#4a5"},
-        abjuration:{backgroundColor:"#0a0"}
+        bard:{backgroundColor:'#a60'},
+        cleric:{backgroundColor:'#a60'},
+        druid:{backgroundColor:'#a60'},
+        paladin:{backgroundColor:'#a60'},
+        ranger:{backgroundColor:'#a60'},
+        sorcerer:{backgroundColor:'#a60'},
+        warlock:{backgroundColor:'#a60'},
+        wizard:{backgroundColor:'#a60'},
+        evocation:{backgroundColor:'#900'},
+        conjuration:{backgroundColor:'#cb0'},
+        transmutation:{backgroundColor:'#606'},
+        necromancy:{backgroundColor:'#222'},
+        divination:{backgroundColor:'#008'},
+        enchantment:{backgroundColor:'#08a'},
+        illusion:{backgroundColor:'#4a5'},
+        abjuration:{backgroundColor:'#0a0'}
     }
 );

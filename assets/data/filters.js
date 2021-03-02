@@ -25,33 +25,33 @@ function FilterOpen({controller}){
 
 const styles=StyleSheet.create({
         inputField:{
-            backgroundColor:"#aaa",
-            width:"80%"
+            backgroundColor:'#aaa',
+            width:'80%'
         },
         mainContainer:{
-            alignItems:"center",
-            margin:"2%",
+            alignItems:'center',
+            margin:'2%',
             marginTop:0,
-            backgroundColor:"#111",
+            backgroundColor:'#111',
             borderRadius:10,
             borderTopLeftRadius:0,
             borderTopRightRadius:0,
-            padding:"2%"
+            padding:'2%'
         },
         filterTouch:{
-            backgroundColor:"#aaa",
-            padding:"2.23%"
+            backgroundColor:'#aaa',
+            padding:'2.23%'
         },
         searchContainer:{
-            backgroundColor:"#777",
-            flexDirection:"row",
-            alignItems:"center",
-            padding:"1%",
-            justifyContent:"space-evenly",
-            width:"86%",
-            alignSelf:"center"
+            backgroundColor:'#777',
+            flexDirection:'row',
+            alignItems:'center',
+            padding:'1%',
+            justifyContent:'space-evenly',
+            width:'86%',
+            alignSelf:'center'
         },
-        white:{color:"#fff"},
-        flexRow:{flexDirection:"row"}
+        white:{color:'#fff'},
+        flexRow:{flexDirection:'row'}
     }
 );

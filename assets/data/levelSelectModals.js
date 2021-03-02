@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, View, Modal, TouchableOpacity, Text, TouchableWithoutFeedback} from 'react-native';
 
-function LevelOpen({controller,title}){
+function LevelOpen({controller,title,pretext}){
     return(
         <TouchableOpacity style={styles.levelOpen} onPress={()=>controller(true)}>
-            <Text style={styles.spacer}>Spell levels: {title}</Text>
+            <Text style={styles.spacer}>{title}</Text>
         </TouchableOpacity>
     );
 }
@@ -17,26 +17,23 @@ function Selector({controller,spellController,name,value}){
     ); 
 }
 
-function LevelModal({show,controller,spellController}){
+function LevelModal({show,controller,spellController,names,nameValues=undefined}){
+    let selectors=[];
+    let values=[];
+    for (let i=0; i<names.length; i++) {
+        let z = nameValues != undefined ? nameValues[i] : i;
+        values.push({name:names[i], value:z});
+    }
+    values.forEach(i=>selectors.push(<Selector controller={controller} spellController={spellController} name={i.name} value={i.value}/>))
     return(
         <Modal
-        animationType="slide"
+        animationType='slide'
         transparent={false}
         visible={show}
         onRequestClose={()=>controller(false)} >
             <TouchableWithoutFeedback onPress={()=>controller(false)}>
                 <View style={styles.levelView}>
-                    <Selector controller={controller} spellController={spellController} name={"All"} value={10}/>
-                    <Selector controller={controller} spellController={spellController} name={"Cantrips"} value={0}/>
-                    <Selector controller={controller} spellController={spellController} name={"Level 1"} value={1}/>
-                    <Selector controller={controller} spellController={spellController} name={"Level 2"} value={2}/>
-                    <Selector controller={controller} spellController={spellController} name={"Level 3"} value={3}/>
-                    <Selector controller={controller} spellController={spellController} name={"Level 4"} value={4}/>
-                    <Selector controller={controller} spellController={spellController} name={"Level 5"} value={5}/>
-                    <Selector controller={controller} spellController={spellController} name={"Level 6"} value={6}/>
-                    <Selector controller={controller} spellController={spellController} name={"Level 7"} value={7}/>
-                    <Selector controller={controller} spellController={spellController} name={"Level 8"} value={8}/>
-                    <Selector controller={controller} spellController={spellController} name={"Level 9"} value={9}/>
+                    {selectors}
                 </View>
             </TouchableWithoutFeedback>
         </Modal>
@@ -45,31 +42,31 @@ function LevelModal({show,controller,spellController}){
 
 const styles=StyleSheet.create({
     levelOpen:{
-        backgroundColor:"#aaa",
-        marginLeft:"2%",
-        marginRight:"2%"
+        backgroundColor:'#aaa',
+        marginLeft:'2%',
+        marginRight:'2%'
     },
-    selectorMain:{padding:"2%"},
+    selectorMain:{padding:'2%'},
     selector:{
-        padding:"2%",
-        backgroundColor:"#aaa",
-        color:"#000",
-        textAlign:"center"
+        padding:'2%',
+        backgroundColor:'#aaa',
+        color:'#000',
+        textAlign:'center'
 
     },
     spacer:{
-        padding:"2%",
-        textAlign:"center",
-        margin:"2%",
-        backgroundColor:"#222",
-        color:"#fff"
+        padding:'2%',
+        textAlign:'center',
+        margin:'2%',
+        backgroundColor:'#222',
+        color:'#fff'
     },
     levelView:{
-        alignContent:"center",
-        justifyContent:"center",
-        padding:"4%",
-        height:"100%",
-        backgroundColor:"#333"
+        alignContent:'center',
+        justifyContent:'center',
+        padding:'4%',
+        height:'100%',
+        backgroundColor:'#333'
     }
 });
 
