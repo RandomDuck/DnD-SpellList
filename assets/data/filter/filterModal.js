@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, View, Text, Switch, StyleSheet, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
-import { spellTextColor, spellTypes, classTypes} from './dataHandler';
+import { spellTextColor, spellTypes, classTypes} from '../utility/dataHandler';
 
 export default function FilterModal({show,edition,filterModal,filterController}){
     let spellTypesList= spellTypes[edition];
@@ -52,7 +52,7 @@ export default function FilterModal({show,edition,filterModal,filterController})
     <Modal 
         visible={show} 
         onRequestClose={()=>filterModal(false)}
-        animationType={'slide'}
+        animationType={'fade'}
         transparent={true}>
         <TouchableWithoutFeedback onPress={()=>filterModal(false)}>
             <View style={styles.modalTopView}>

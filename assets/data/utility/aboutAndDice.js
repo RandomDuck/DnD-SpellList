@@ -36,7 +36,7 @@ function AboutModal(props){
         <TouchOutsideModal 
             controller={props.controller}
             transparent={true}
-            animationType={'slide'}
+            animationType={'fade'}
             visible={props.visible}
             style={styles.aboutStyle}
             dissmisOnPress={true}>
@@ -117,7 +117,7 @@ function DiceModal(props){
         <TouchOutsideModal 
             controller={props.controller}
             transparent={true}
-            animationType={'slide'}
+            animationType={'fade'}
             modalStyle={styles.diceModal}
             visible={props.visible}
             style={styles.diceStyle}

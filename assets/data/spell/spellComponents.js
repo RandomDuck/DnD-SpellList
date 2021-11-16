@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Text, StyleSheet, FlatList, Image, TouchableOpacity } from 'react-native';
-import { spellList, spellImages, spellTextColor } from './dataHandler';
+import { spellList, spellImages, spellTextColor } from '../utility/dataHandler';
 
 let spells;
 function sortSpells(listedSpells,categories){

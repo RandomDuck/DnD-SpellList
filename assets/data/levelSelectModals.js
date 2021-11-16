@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, Modal, TouchableOpacity, Text, TouchableWithoutFeedback} from 'react-native';
+import { Animated, StyleSheet, TouchableOpacity, Text} from 'react-native';
 
-function LevelOpen({controller,title}){
+function LevelOpen({show,controller,title}){
     return(
-        <TouchableOpacity style={styles.levelOpen} onPress={()=>controller(true)}>
+        <TouchableOpacity style={styles.levelOpen} onPress={()=>controller(!show)}>
             <Text style={styles.spacer}>{title}</Text>
         </TouchableOpacity>
     );
@@ -18,6 +18,8 @@ function Selector({controller,spellController,name,value}){
 }
 
 function LevelModal({show,controller,spellController,names,nameValues=undefined}){
+    const openAnim = React.useRef(new Animated.Value(0)).current  // Initial value for opacity: 0
+
     let selectors=[];
     let values=[];
     for (let i=0; i<names.length; i++) {
@@ -25,19 +27,29 @@ function LevelModal({show,controller,spellController,names,nameValues=undefined}
         values.push({name:names[i], value:z, key:i});
     }
     values.forEach(i=>selectors.push(<Selector controller={controller} spellController={spellController} name={i.name} value={i.value} key={i.key}/>))
-    return(
-        <Modal
-        animationType='slide'
-        transparent={false}
-        visible={show}
-        onRequestClose={()=>controller(false)} >
-            <TouchableWithoutFeedback onPress={()=>controller(false)}>
-                <View style={styles.levelView}>
-                    {selectors}
-                </View>
-            </TouchableWithoutFeedback>
-        </Modal>
-    );
+
+    React.useEffect(() => {
+        if (show) {
+            Animated.timing(
+            openAnim,
+            {
+                toValue: 32.5*selectors.length,
+                duration: 200,
+                useNativeDriver: false
+            }
+            ).start();
+        } else {
+            Animated.timing(
+              openAnim,
+              {
+                toValue: 0,
+                useNativeDriver: false
+              }
+            ).start();
+        }
+      }, [openAnim, show])
+    
+    return show && <Animated.View style={{ overflow: 'hidden', height:openAnim, ...styles.levelView}}>{selectors}</Animated.View>
 }
 
 const styles=StyleSheet.create({
@@ -62,10 +74,12 @@ const styles=StyleSheet.create({
         color:'#fff'
     },
     levelView:{
+        position: 'absolute',
+        top: '6%',
+        left: '30%',
         alignContent:'center',
-        justifyContent:'center',
+        width: '40%',
         padding:'4%',
-        height:'100%',
         backgroundColor:'#333'
     }
 });

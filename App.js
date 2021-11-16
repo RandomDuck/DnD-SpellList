@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { ImageBackground, View, StyleSheet} from 'react-native';
-import { backgroundImg, classTypes, spellTypes, spellList } from './assets/data/dataHandler'
+import { ImageBackground, View, StyleSheet, SafeAreaView, TouchableWithoutFeedback} from 'react-native';
+import { backgroundImg, classTypes, spellTypes, spellList } from './assets/data/utility/dataHandler'
 import { LevelOpen, LevelModal } from './assets/data/levelSelectModals'
-import { AboutModal, DiceModal, OutsideModalTrigger } from './assets/data/aboutAndDice'
-import FlatSpells from './assets/data/spellComponents';
-import SpellModal from './assets/data/spellModal'
-import SearchBar from './assets/data/filters';
-import FilterModal from './assets/data/filterModal';
+import { AboutModal, DiceModal, OutsideModalTrigger } from './assets/data/utility/aboutAndDice'
+import FlatSpells from './assets/data/spell/spellComponents';
+import SpellModal from './assets/data/spell/spellModal'
+import SearchBar from './assets/data/filter/filters';
+import FilterModal from './assets/data/filter/filterModal';
 
 let editions=[];
 Object.keys(spellList).forEach(i=>editions.push(spellList[i].editionName));
@@ -14,7 +14,7 @@ Object.keys(spellList).forEach(i=>editions.push(spellList[i].editionName));
 export default function App() {
   
   // declare state trackers
-  const [ edition, changeEdition ] = useState('s5e');
+  const edition = 's5e';
   const [ diceModal, setDiceModal ] = useState(false);
   const [ aboutModal, setAboutModal ] = useState(false);
   const [ spellSelect, setSpellSelect ] = useState(0);
@@ -22,7 +22,6 @@ export default function App() {
   const [ searchValue, searchSet ] = useState('');
   const [ spellModalActive, changeSpellModalActive ] = useState({show:false,data:{name:'',use:[],data:[],level:0,types:''}});
   const [ menuModalActive, changeMenuModalActive ] = useState(false);
-  const [ menuEditionModalActive, changeEditionMenuModalActive ] = useState(false);
   const [ filterModalActive, changeFilterModalActive ] = useState(false);
 
   let titles=spellList[edition].titles;
@@ -32,55 +31,54 @@ export default function App() {
   function aboutModalController(bool) {setAboutModal(bool)}
   function spellSelectHandler(int) {setSpellSelect(int)}
   function spellModalController(showBool,spellData) {changeSpellModalActive({show:showBool,data:spellData})}
-  function menuEditionModalController(bool) {changeEditionMenuModalActive(bool)}
   function menuModalController(bool) {changeMenuModalActive(bool)}
   function searchController(value) {searchSet(value)}
   function filterController(object) {setFilterTypes(object)}
   function filterModalController(bool) {changeFilterModalActive(bool)}
-  function setEdition(str) {
-    changeEdition(str);
-    titles=spellList[edition].titles;
-  }
+  
  
   return (
-    <View style={styles.topWrapper}>
-      <ImageBackground source={backgroundImg} style={styles.main}>
+  <>
+    <SafeAreaView style={{ flex: 0, backgroundColor: '#a60', minHeight: '4%'}} />
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#111', minHeight: '100%'}} >
+      <TouchableWithoutFeedback onPress={()=>{changeMenuModalActive(false)}}>
+        <View>
+          <ImageBackground source={backgroundImg} style={styles.main}>
+            <View style={styles.menu}>
+              <OutsideModalTrigger 
+                controller={diceModalController} 
+                outStyle={styles.OMTOut} 
+                style={styles.OMT} 
+                imgStyle={styles.OMTImage}
+                image={require('./assets/_img/dice.png')}/>
+              <View style={styles.spellMenu}>
+                <LevelOpen 
+                controller={menuModalController} 
+                title={`Spell level: ${titles[spellSelect]}`}
+                show={menuModalActive}/>
+              </View>
+              <OutsideModalTrigger 
+                controller={aboutModalController} 
+                outStyle={styles.OMTOut} 
+                style={styles.OMT} 
+                imgStyle={styles.OMTImage}
+                image={require('./assets/_img/about.png')}/>
+            </View>
 
-        <View style={styles.menu}>
-          <OutsideModalTrigger 
-            controller={diceModalController} 
-            outStyle={styles.OMTOut} 
-            style={styles.OMT} 
-            imgStyle={styles.OMTImage}
-            image={require('./assets/_img/dice.png')}/>
-          <View style={styles.spellMenu}>
-            <LevelOpen 
-            controller={menuEditionModalController} 
-            title={`Edition: ${spellList[edition].editionName}`}/>
-            <LevelOpen 
-            controller={menuModalController} 
-            title={`Spell level: ${titles[spellSelect]}`}/>
-          </View>
-          <OutsideModalTrigger 
-            controller={aboutModalController} 
-            outStyle={styles.OMTOut} 
-            style={styles.OMT} 
-            imgStyle={styles.OMTImage}
-            image={require('./assets/_img/about.png')}/>
+            <SearchBar controller={searchController} filterModal={filterModalController} />
+            <FlatSpells filters={filterTypes} search={searchValue} show={spellSelect} spellModalController={spellModalController} editon={edition}/>
+
+            <AboutModal controller={aboutModalController} visible={aboutModal}/>
+            <DiceModal controller={diceModalController} visible={diceModal}/>
+
+            <SpellModal spell={spellModalActive} controller={spellModalController}/>
+            <FilterModal show={filterModalActive} edition={edition} filterModal={filterModalController} filterController={filterController} />
+            <LevelModal show={menuModalActive} controller={menuModalController} spellController={spellSelectHandler} names={titles}/>
+          </ImageBackground>
         </View>
-
-        <SearchBar controller={searchController} filterModal={filterModalController} />
-        <FlatSpells filters={filterTypes} search={searchValue} show={spellSelect} spellModalController={spellModalController} editon={edition}/>
-
-        <AboutModal controller={aboutModalController} visible={aboutModal}/>
-        <DiceModal controller={diceModalController} visible={diceModal}/>
-
-        <SpellModal spell={spellModalActive} controller={spellModalController}/>
-        <FilterModal show={filterModalActive} edition={edition} filterModal={filterModalController} filterController={filterController} />
-        <LevelModal show={menuModalActive} controller={menuModalController} spellController={spellSelectHandler} names={titles}/>
-        <LevelModal show={menuEditionModalActive} controller={menuEditionModalController} spellController={setEdition} names={editions} nameValues={Object.keys(spellList)}/>
-      </ImageBackground>
-    </View>
+      </TouchableWithoutFeedback>
+    </SafeAreaView>
+  </>
   );
 }
 
@@ -121,13 +119,6 @@ const styles=StyleSheet.create({
       resizeMode:'contain',
       justifyContent:'space-around',
       flexDirection:'column',
-      paddingBottom:'35.5%',
-      height:'120%'
-    },  
-    topWrapper:{
-      paddingTop:'7%',
-      backgroundColor:'#a60',
-      height:'120%'
     }
   }
 );
