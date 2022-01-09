@@ -43,10 +43,19 @@ const spellImages = {
   transmutation: require('../_img/SpellBackgrounds/transformation.png')
 };
 
+const icons = {
+  About: require('../_img/icons/About.png'),
+  Dice: require('../_img/icons/Dice.png'),
+  Filter: require('../_img/icons/Filter.png'),
+  Menu: require('../_img/icons/Menu.png'),
+  Settings: require('../_img/icons/Settings.png')
+};
+
 const backgroundImg = require('../_img/Background.png');
 const spellList = {
   spells: require('./5Espells.json'),
   titles: ['Cantrips', 'Level 1', 'Level 2', 'Level 3', 'Level 4', 'Level 5', 'Level 6', 'Level 7', 'Level 8', 'Level 9', 'All'],
+  allAt: 10,
   editionName: '5e'
 }
 const { donateUrl, userSettings, defaultUserSettings } = require('./settings.json');
@@ -55,4 +64,15 @@ if (!(Object.keys(userSettings).length > 0)) {
   usedUserSettings = defaultUserSettings;
 }
 
-export { spellImages, classTypes, spellTypes, backgroundImg, spellTextColor, usedUserSettings as userSettings, donateUrl, defaultUserSettings, spellList }
+export { 
+  spellImages, 
+  classTypes, 
+  spellTypes, 
+  backgroundImg, 
+  spellTextColor, 
+  usedUserSettings as userSettings, 
+  donateUrl, 
+  defaultUserSettings, 
+  spellList,
+  icons
+}
