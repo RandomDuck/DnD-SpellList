@@ -11,7 +11,7 @@ const arrowTypes = {
   triangleCornerTopRight: 'triangleCornerTopRight',
   triangleCornerBottomLeft: 'triangleCornerBottomLeft'
 }
-function ArrowButton({ onPress, width = 50, height = 100, arrowType, feedback = false, color = "#000", style }) {
+const ArrowButton = ({ onPress, width = 50, height = 100, arrowType, feedback = false, color = "#000", style }) => {
   let type = {};
   switch (arrowType) {
     case arrowTypes.triangleUp:
