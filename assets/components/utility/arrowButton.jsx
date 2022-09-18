@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
-import styles from "../styles/arrowStyle.jsx";
+import styles from "../styles/arrowStyle.es6";
 const arrowTypes = {
   triangleUp: 'triangleUp',
   triangleDown: 'triangleDown',
