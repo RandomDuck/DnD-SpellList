@@ -42,7 +42,7 @@ export default function App() {
     <SafeAreaView style={{ flex: 0, backgroundColor: '#a60', minHeight: '4%'}} />
     <SafeAreaView style={{ flex: 1, backgroundColor: '#111', minHeight: '100%'}} >
       <TouchableWithoutFeedback onPress={()=>{changeMenuModalActive(false)}}>
-        <View>
+        <View style={{minHeight: '100%'}}>
           <ImageBackground source={backgroundImg} style={styles.main}>
             <View style={styles.menu}>
               <OutsideModalTrigger 
@@ -116,7 +116,9 @@ const styles=StyleSheet.create({
       color:'#fff'
     },
     main:{
-      resizeMode:'contain',
+      display: 'flex',
+      flex: 1,
+      resizeMode:'fill',
       justifyContent:'space-around',
       flexDirection:'column',
     }
