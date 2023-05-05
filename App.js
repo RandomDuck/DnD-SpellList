@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { ImageBackground, View, StyleSheet, SafeAreaView, TouchableWithoutFeedback} from 'react-native';
-import { backgroundImg, classTypes, spellTypes, spellList } from './assets/data/utility/dataHandler'
-import { LevelOpen, LevelModal } from './assets/data/levelSelectModals'
-import { AboutModal, DiceModal, OutsideModalTrigger } from './assets/data/utility/aboutAndDice'
-import FlatSpells from './assets/data/spell/spellComponents';
-import SpellModal from './assets/data/spell/spellModal'
-import SearchBar from './assets/data/filter/filters';
-import FilterModal from './assets/data/filter/filterModal';
+import { backgroundImg, classTypes, spellTypes, spellList } from './assets/components/utility/dataHandler'
+import { LevelOpen, LevelModal } from './assets/components/levelSelectModals'
+import { AboutModal, DiceModal, OutsideModalTrigger } from './assets/components/utility/aboutAndDice'
+import FlatSpells from './assets/components/spell/spellComponents';
+import SpellModal from './assets/components/spell/spellModal'
+import SearchBar from './assets/components/filter/filters';
+import FilterModal from './assets/components/filter/filterModal';
 
 let editions=[];
 Object.keys(spellList).forEach(i=>editions.push(spellList[i].editionName));
@@ -50,7 +50,7 @@ export default function App() {
                 outStyle={styles.OMTOut} 
                 style={styles.OMT} 
                 imgStyle={styles.OMTImage}
-                image={require('./assets/_img/dice.png')}/>
+                image={require('./assets/_img/icons/Dice.png')}/>
               <View style={styles.spellMenu}>
                 <LevelOpen 
                 controller={menuModalController} 
@@ -62,7 +62,7 @@ export default function App() {
                 outStyle={styles.OMTOut} 
                 style={styles.OMT} 
                 imgStyle={styles.OMTImage}
-                image={require('./assets/_img/about.png')}/>
+                image={require('./assets/_img/icons/About.png')}/>
             </View>
 
             <SearchBar controller={searchController} filterModal={filterModalController} />
